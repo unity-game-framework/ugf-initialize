@@ -2,6 +2,9 @@ using System;
 
 namespace UGF.Initialize.Runtime
 {
+    /// <summary>
+    /// Represents mutable initialize state.
+    /// </summary>
     public struct InitializeState : IInitialize
     {
         public bool IsInitialized { get { return m_state; } }
