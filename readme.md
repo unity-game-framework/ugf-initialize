@@ -23,7 +23,7 @@ UGF.Initialize
 
 ## Description
 
-No description.
+Used to implement initialize pattern.
 
 ## How to Install
 
