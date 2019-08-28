@@ -1,5 +1,3 @@
-using System;
-
 namespace UGF.Initialize.Runtime
 {
     /// <summary>
@@ -15,7 +13,7 @@ namespace UGF.Initialize.Runtime
         {
             if (m_state)
             {
-                throw new InvalidOperationException("The object already initialized.");
+                throw new InitializeStateException("An state already initialized.");
             }
 
             m_state = true;
@@ -25,7 +23,7 @@ namespace UGF.Initialize.Runtime
         {
             if (!m_state)
             {
-                throw new InvalidOperationException("The object already uninitialized.");
+                throw new InitializeStateException("An state already uninitialized.");
             }
 
             m_state = false;
