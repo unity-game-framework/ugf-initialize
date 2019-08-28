@@ -1,4 +1,3 @@
-using System;
 using NUnit.Framework;
 
 namespace UGF.Initialize.Runtime.Tests
@@ -7,6 +6,10 @@ namespace UGF.Initialize.Runtime.Tests
     {
         private class Target : InitializeBase
         {
+            public new bool ValidateState(bool expected, bool throws = true)
+            {
+                return base.ValidateState(expected, throws);
+            }
         }
 
         [Test]
@@ -27,7 +30,7 @@ namespace UGF.Initialize.Runtime.Tests
             target.Initialize();
 
             Assert.True(target.IsInitialized);
-            Assert.Throws<InvalidOperationException>(() => target.Initialize(), "The object already initialized.");
+            Assert.Throws<InitializeStateException>(() => target.Initialize());
         }
 
         [Test]
@@ -48,7 +51,23 @@ namespace UGF.Initialize.Runtime.Tests
             var target = new Target();
 
             Assert.False(target.IsInitialized);
-            Assert.Throws<InvalidOperationException>(() => target.Uninitialize(), "The object already uninitialized.");
+            Assert.Throws<InitializeStateException>(() => target.Uninitialize());
+        }
+
+        [Test]
+        public void ValidateState()
+        {
+            var target = new Target();
+
+            Assert.True(target.ValidateState(false, false));
+            Assert.False(target.ValidateState(true, false));
+            Assert.DoesNotThrow(() => target.ValidateState(true, false));
+            Assert.Throws<InitializeStateException>(() => target.ValidateState(true));
+
+            target.Initialize();
+
+            Assert.False(target.ValidateState(false, false));
+            Assert.True(target.ValidateState(true, false));
         }
     }
 }
