@@ -44,6 +44,11 @@ namespace UGF.Initialize.Runtime
             OnPostUninitialize();
         }
 
+        /// <summary>
+        /// Validates state of this object.
+        /// </summary>
+        /// <param name="expected">The expected initialize state.</param>
+        /// <param name="throws">The value that determines whether to throw exception on invalid validate result.</param>
         protected bool ValidateState(bool expected, bool throws = true)
         {
             return InitializeUtility.ValidateState(this, expected, throws);
