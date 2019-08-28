@@ -4,9 +4,8 @@ UGF.Initialize
 
 ## Info
 
-- **Version**: `1.0.0-preview`
-- **Unity Version**: `2019.1.0`
-- **Scripting Runtime Version**: `.NET 4.x Equivalent`
+- **Version**: `1.0.0`
+- **Unity Version**: `2019.2.0`
 - **Api Compatibility Level**: `.NET Standard 2.0`
 
 ### Dependencies
@@ -19,12 +18,12 @@ UGF.Initialize
 
 ### Registries
 
-- [Stable][2] (N/A)
+- [Stable][2]
 - [Develop][3]
 
 ## Description
 
-No description.
+Used to implement initialize pattern.
 
 ## How to Install
 
