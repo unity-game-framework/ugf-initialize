@@ -7,13 +7,13 @@ namespace UGF.Initialize.Runtime
     /// </summary>
     public abstract class InitializeBaseAsync : InitializeBase, IInitializeAsync
     {
-        private InitializeState m_state = new InitializeState();
+        private InitializeState m_initializeAsyncState = new InitializeState();
 
         public IEnumerator InitializeAsync()
         {
             ValidateState(true);
 
-            m_state.Initialize();
+            m_initializeAsyncState.Initialize();
 
             yield return OnInitializeAsync();
         }
@@ -30,7 +30,7 @@ namespace UGF.Initialize.Runtime
         {
             base.OnUninitialize();
 
-            m_state.Uninitialize();
+            m_initializeAsyncState.Uninitialize();
         }
     }
 }

@@ -9,8 +9,9 @@ namespace UGF.Initialize.Runtime.Tests
         }
 
         [Test]
-        public void ValidateState()
+        public void ValidateStateDeprecated()
         {
+#pragma warning disable 618
             var target = new Target();
 
             Assert.True(InitializeUtility.ValidateState(target, false, false));
@@ -22,6 +23,23 @@ namespace UGF.Initialize.Runtime.Tests
 
             Assert.False(InitializeUtility.ValidateState(target, false, false));
             Assert.True(InitializeUtility.ValidateState(target, true, false));
+#pragma warning restore 618
+        }
+
+        [Test]
+        public void ValidateState()
+        {
+            var target = new Target();
+
+            Assert.True(InitializeUtility.ValidateState(false, false, null, false));
+            Assert.False(InitializeUtility.ValidateState(true, false, null, false));
+            Assert.DoesNotThrow(() => InitializeUtility.ValidateState(true, false, null, false));
+            Assert.Throws<InitializeStateException>(() => InitializeUtility.ValidateState(true, false));
+
+            target.Initialize();
+
+            Assert.False(InitializeUtility.ValidateState(false, true, null, false));
+            Assert.True(InitializeUtility.ValidateState(true, true, null, false));
         }
     }
 }

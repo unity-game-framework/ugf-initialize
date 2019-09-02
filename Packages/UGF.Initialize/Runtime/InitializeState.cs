@@ -1,3 +1,5 @@
+using System;
+
 namespace UGF.Initialize.Runtime
 {
     /// <summary>
@@ -6,14 +8,24 @@ namespace UGF.Initialize.Runtime
     public struct InitializeState : IInitialize
     {
         public bool IsInitialized { get { return m_state; } }
+        public string Name { get { return m_name ?? "State"; } }
 
+        private readonly string m_name;
         private bool m_state;
+
+        public InitializeState(string name)
+        {
+            if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
+
+            m_name = name;
+            m_state = false;
+        }
 
         public void Initialize()
         {
             if (m_state)
             {
-                throw new InitializeStateException("An state already initialized.");
+                throw new InitializeStateException($"A '{Name}' already initialized.");
             }
 
             m_state = true;
@@ -23,15 +35,20 @@ namespace UGF.Initialize.Runtime
         {
             if (!m_state)
             {
-                throw new InitializeStateException("An state already uninitialized.");
+                throw new InitializeStateException($"A '{Name}' already uninitialized.");
             }
 
             m_state = false;
         }
 
+        public bool ValidateState(bool expected, bool throws = true)
+        {
+            return InitializeUtility.ValidateState(expected, m_state, Name, throws);
+        }
+
         public bool Equals(InitializeState other)
         {
-            return m_state == other.m_state;
+            return m_name == other.m_name && m_state == other.m_state;
         }
 
         public override bool Equals(object obj)
@@ -41,7 +58,10 @@ namespace UGF.Initialize.Runtime
 
         public override int GetHashCode()
         {
-            return m_state.GetHashCode();
+            unchecked
+            {
+                return ((m_name != null ? m_name.GetHashCode() : 0) * 397) ^ m_state.GetHashCode();
+            }
         }
 
         public static bool operator ==(InitializeState left, InitializeState right)
@@ -56,7 +76,7 @@ namespace UGF.Initialize.Runtime
 
         public override string ToString()
         {
-            return $"InitializeState: {m_state.ToString()}";
+            return $"'{Name}': '{m_state.ToString()}'";
         }
     }
 }
