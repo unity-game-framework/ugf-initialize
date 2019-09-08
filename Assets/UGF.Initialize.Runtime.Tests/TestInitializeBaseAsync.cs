@@ -8,20 +8,9 @@ namespace UGF.Initialize.Runtime.Tests
     {
         private class Target : InitializeBaseAsync
         {
-            public bool InitializeAsyncState { get; private set; }
-
             protected override IEnumerator OnInitializeAsync()
             {
                 yield return null;
-
-                InitializeAsyncState = true;
-            }
-
-            protected override void OnUninitialize()
-            {
-                base.OnUninitialize();
-
-                InitializeAsyncState = false;
             }
         }
 
@@ -33,16 +22,24 @@ namespace UGF.Initialize.Runtime.Tests
             target.Initialize();
 
             Assert.True(target.IsInitialized);
-            Assert.False(target.InitializeAsyncState);
+            Assert.False(target.IsAsyncInitialized);
+            Assert.False(target.IsAsyncInProgress);
 
-            yield return target.InitializeAsync();
+            IEnumerator routine = target.InitializeAsync();
 
-            Assert.True(target.InitializeAsyncState);
+            Assert.False(target.IsAsyncInitialized);
+            Assert.True(target.IsAsyncInProgress);
+
+            yield return routine;
+
+            Assert.True(target.IsAsyncInitialized);
+            Assert.False(target.IsAsyncInProgress);
 
             target.Uninitialize();
 
             Assert.False(target.IsInitialized);
-            Assert.False(target.InitializeAsyncState);
+            Assert.False(target.IsAsyncInitialized);
+            Assert.False(target.IsAsyncInProgress);
         }
     }
 }
