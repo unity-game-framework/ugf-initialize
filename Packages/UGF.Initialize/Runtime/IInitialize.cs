@@ -11,6 +11,16 @@ namespace UGF.Initialize.Runtime
         bool IsInitialized { get; }
 
         /// <summary>
+        /// Occurs after initialization.
+        /// </summary>
+        event InitializeHandler Initialized;
+
+        /// <summary>
+        /// Occurs after uninitialization.
+        /// </summary>
+        event InitializeHandler Uninitialized;
+
+        /// <summary>
         /// Initializes this object.
         /// </summary>
         void Initialize();

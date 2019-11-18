@@ -8,19 +8,24 @@ namespace UGF.Initialize.Runtime
         /// <summary>
         /// Gets value that determines whether object is initialized.
         /// </summary>
-        public bool IsInitialized { get { return m_state.IsInitialized; } }
+        public bool IsInitialized { get { return m_state; } }
 
-        private InitializeState m_state = new InitializeState();
+        public event InitializeHandler Initialized;
+        public event InitializeHandler Uninitialized;
+
+        private InitializeState m_state;
 
         /// <summary>
         /// Initializes this object.
         /// </summary>
         public void Initialize()
         {
-            m_state.Initialize();
+            m_state = m_state.Initialize();
 
             OnPreInitialize();
             OnInitialize();
+
+            Initialized?.Invoke(this);
         }
 
         /// <summary>
@@ -28,10 +33,12 @@ namespace UGF.Initialize.Runtime
         /// </summary>
         public void Uninitialize()
         {
-            m_state.Uninitialize();
+            m_state = m_state.Uninitialize();
 
             OnUninitialize();
             OnPostUninitialize();
+
+            Uninitialized?.Invoke(this);
         }
 
         /// <summary>

@@ -28,7 +28,7 @@ namespace UGF.Initialize.Runtime
         /// <param name="throws">The value that determines whether to throw exception on invalid validate result.</param>
         public static bool ValidateState(bool expected, InitializeState state, bool throws = true)
         {
-            return ValidateState(expected, state.IsInitialized, state.Name, throws);
+            return ValidateState(expected, state, null, throws);
         }
 
         /// <summary>
