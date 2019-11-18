@@ -10,6 +10,9 @@ namespace UGF.Initialize.Runtime
         /// </summary>
         public bool IsInitialized { get { return m_state; } }
 
+        public event InitializeHandler Initialized;
+        public event InitializeHandler Uninitialized;
+
         private InitializeState m_state;
 
         /// <summary>
@@ -21,6 +24,8 @@ namespace UGF.Initialize.Runtime
 
             OnPreInitialize();
             OnInitialize();
+
+            Initialized?.Invoke(this);
         }
 
         /// <summary>
@@ -32,6 +37,8 @@ namespace UGF.Initialize.Runtime
 
             OnUninitialize();
             OnPostUninitialize();
+
+            Uninitialized?.Invoke(this);
         }
 
         /// <summary>
