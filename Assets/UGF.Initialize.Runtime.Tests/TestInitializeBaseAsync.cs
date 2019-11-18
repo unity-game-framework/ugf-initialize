@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
 namespace UGF.Initialize.Runtime.Tests
 {
+    [Obsolete]
     public class TestInitializeBaseAsync
     {
         private class Target : InitializeBaseAsync
