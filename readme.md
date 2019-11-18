@@ -4,7 +4,7 @@ UGF.Initialize
 
 ## Info
 
-- **Version**: `1.2.0`
+- **Version**: `2.0.0-preview`
 - **Unity Version**: `2019.3.0`
 - **Api Compatibility Level**: `.NET Standard 2.0`
 
@@ -18,7 +18,7 @@ UGF.Initialize
 
 ### Registries
 
-- [Stable][2]
+- [Stable][2] (N/A)
 - [Develop][3]
 
 ## Description
