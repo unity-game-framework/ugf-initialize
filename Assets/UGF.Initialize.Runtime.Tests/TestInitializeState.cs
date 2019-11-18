@@ -9,11 +9,10 @@ namespace UGF.Initialize.Runtime.Tests
         {
             var state = new InitializeState();
 
-            Assert.False(state.IsInitialized);
+            Assert.False(state);
             Assert.True(state.ValidateState(false));
-            Assert.AreEqual("State", state.Name);
-            Assert.DoesNotThrow(() => state.Initialize());
-            Assert.True(state.IsInitialized);
+            Assert.DoesNotThrow(() => state = state.Initialize());
+            Assert.True(state);
             Assert.True(state.ValidateState(true));
             Assert.Throws<InitializeStateException>(() => state.Initialize());
         }
@@ -21,16 +20,14 @@ namespace UGF.Initialize.Runtime.Tests
         [Test]
         public void Uninitialize()
         {
-            var state = new InitializeState("Test state name");
+            var state = new InitializeState();
 
-            Assert.AreEqual("Test state name", state.Name);
+            state = state.Initialize();
 
-            state.Initialize();
-
-            Assert.True(state.IsInitialized);
+            Assert.True(state);
             Assert.True(state.ValidateState(true));
-            Assert.DoesNotThrow(() => state.Uninitialize());
-            Assert.False(state.IsInitialized);
+            Assert.DoesNotThrow(() => state = state.Uninitialize());
+            Assert.False(state);
             Assert.True(state.ValidateState(false));
             Assert.Throws<InitializeStateException>(() => state.Uninitialize());
         }

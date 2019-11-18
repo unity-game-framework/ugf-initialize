@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 
 namespace UGF.Initialize.Runtime
@@ -5,6 +6,7 @@ namespace UGF.Initialize.Runtime
     /// <summary>
     /// Represents an object with initialize state and additional state which should be initialized asynchronously.
     /// </summary>
+    [Obsolete("IInitializeAsync has been deprecated.")]
     public interface IInitializeAsync : IInitialize
     {
         /// <summary>

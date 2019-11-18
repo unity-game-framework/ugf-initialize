@@ -26,6 +26,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - Nothing.
 
+## 2.0.0-preview - 2019-11-18
+- [Commits](https://github.com/unity-game-framework/ugf-initialize/compare/1.2.0...2.0.0-preview)
+- [Milestone](https://github.com/unity-game-framework/ugf-initialize/milestone/5?closed=1)
+
+### Added
+- `IInitialize.Initialized` and `IInitialize.Uninitialized` events.
+
+### Changed
+- Update to Unity 2019.3.
+- Rework `InitializeState` to immutable unit.
+
+### Deprecated
+- `IInitializeAsync` has been deprecated and will be removed at next releases.
+
 ## 1.2.0 - 2019-09-08
 - [Commits](https://github.com/unity-game-framework/ugf-initialize/compare/1.1.0...1.2.0)
 - [Milestone](https://github.com/unity-game-framework/ugf-initialize/milestone/4?closed=1)
