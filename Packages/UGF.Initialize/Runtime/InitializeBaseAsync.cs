@@ -7,17 +7,17 @@ namespace UGF.Initialize.Runtime
     /// </summary>
     public abstract class InitializeBaseAsync : InitializeBase, IInitializeAsync
     {
-        public bool IsAsyncInitialized { get { return m_initializeAsyncState.IsInitialized && m_initializeAsyncRoutine == null; } }
+        public bool IsAsyncInitialized { get { return m_initializeAsyncState && m_initializeAsyncRoutine == null; } }
         public bool IsAsyncInProgress { get { return m_initializeAsyncRoutine != null; } }
 
-        private InitializeState m_initializeAsyncState = new InitializeState();
+        private InitializeState m_initializeAsyncState;
         private IEnumerator m_initializeAsyncRoutine;
 
         public IEnumerator InitializeAsync()
         {
             ValidateState(true);
 
-            m_initializeAsyncState.Initialize();
+            m_initializeAsyncState = m_initializeAsyncState.Initialize();
             m_initializeAsyncRoutine = WaitForOnInitializeAsync();
 
             return m_initializeAsyncRoutine;
@@ -35,7 +35,7 @@ namespace UGF.Initialize.Runtime
         {
             base.OnUninitialize();
 
-            m_initializeAsyncState.Uninitialize();
+            m_initializeAsyncState = m_initializeAsyncState.Uninitialize();
 
             InitializeUtility.ValidateState(false, IsAsyncInProgress, nameof(IsAsyncInProgress));
         }

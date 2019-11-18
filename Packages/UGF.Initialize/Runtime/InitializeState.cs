@@ -1,54 +1,63 @@
-using System;
-
 namespace UGF.Initialize.Runtime
 {
     /// <summary>
-    /// Represents mutable initialize state.
+    /// Represents initialize state.
     /// </summary>
-    public struct InitializeState : IInitialize
+    public struct InitializeState
     {
-        public bool IsInitialized { get { return m_state; } }
-        public string Name { get { return m_name ?? "State"; } }
+        /// <summary>
+        /// Gets the value of the current state.
+        /// </summary>
+        public bool Value { get; }
 
-        private readonly string m_name;
-        private bool m_state;
-
-        public InitializeState(string name)
+        /// <summary>
+        /// Creates state with the specified value.
+        /// </summary>
+        /// <param name="value">The value of the state.</param>
+        public InitializeState(bool value)
         {
-            if (string.IsNullOrEmpty(name)) throw new ArgumentNullException(nameof(name));
-
-            m_name = name;
-            m_state = false;
+            Value = value;
         }
 
-        public void Initialize()
+        /// <summary>
+        /// Changes current state to initialized.
+        /// </summary>
+        public InitializeState Initialize()
         {
-            if (m_state)
+            if (Value)
             {
-                throw new InitializeStateException($"A '{Name}' already initialized.");
+                throw new InitializeStateException("A state already initialized.");
             }
 
-            m_state = true;
+            return new InitializeState(true);
         }
 
-        public void Uninitialize()
+        /// <summary>
+        /// Changes current state to uninitialized.
+        /// </summary>
+        public InitializeState Uninitialize()
         {
-            if (!m_state)
+            if (!Value)
             {
-                throw new InitializeStateException($"A '{Name}' already uninitialized.");
+                throw new InitializeStateException("A state already uninitialized.");
             }
 
-            m_state = false;
+            return new InitializeState(false);
         }
 
+        /// <summary>
+        /// Validates current state.
+        /// </summary>
+        /// <param name="expected">The expected initialize state.</param>
+        /// <param name="throws">The value that determines whether to throw exception on invalid validate result.</param>
         public bool ValidateState(bool expected, bool throws = true)
         {
-            return InitializeUtility.ValidateState(expected, m_state, Name, throws);
+            return InitializeUtility.ValidateState(expected, Value, null, throws);
         }
 
         public bool Equals(InitializeState other)
         {
-            return m_name == other.m_name && m_state == other.m_state;
+            return Value == other.Value;
         }
 
         public override bool Equals(object obj)
@@ -58,10 +67,7 @@ namespace UGF.Initialize.Runtime
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                return ((m_name != null ? m_name.GetHashCode() : 0) * 397) ^ m_state.GetHashCode();
-            }
+            return Value.GetHashCode();
         }
 
         public static bool operator ==(InitializeState left, InitializeState right)
@@ -74,9 +80,14 @@ namespace UGF.Initialize.Runtime
             return !left.Equals(right);
         }
 
+        public static implicit operator bool(InitializeState state)
+        {
+            return state.Value;
+        }
+
         public override string ToString()
         {
-            return $"'{Name}': '{m_state.ToString()}'";
+            return Value.ToString();
         }
     }
 }
