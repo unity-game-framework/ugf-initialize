@@ -24,6 +24,7 @@ namespace UGF.Initialize.Runtime
 
             OnPreInitialize();
             OnInitialize();
+            OnPostInitialize();
 
             Initialized?.Invoke(this);
         }
@@ -35,6 +36,7 @@ namespace UGF.Initialize.Runtime
         {
             m_state = m_state.Uninitialize();
 
+            OnPreUninitialize();
             OnUninitialize();
             OnPostUninitialize();
 
@@ -62,6 +64,20 @@ namespace UGF.Initialize.Runtime
         /// Invokes on initialization.
         /// </summary>
         protected virtual void OnInitialize()
+        {
+        }
+
+        /// <summary>
+        /// Invokes after initialization.
+        /// </summary>
+        protected virtual void OnPostInitialize()
+        {
+        }
+
+        /// <summary>
+        /// Invokes before uninitialization.
+        /// </summary>
+        protected virtual void OnPreUninitialize()
         {
         }
 
