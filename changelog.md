@@ -26,6 +26,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - Nothing.
 
+## 2.2.0-preview - 2020-02-15
+- [Commits](https://github.com/unity-game-framework/ugf-initialize/compare/2.1.0-preview...2.2.0-preview)
+- [Milestone](https://github.com/unity-game-framework/ugf-initialize/milestone/7?closed=1)
+
+### Changed
+- Change `InitializeCollection` to generic.
+
 ## 2.1.0-preview - 2020-02-15
 - [Commits](https://github.com/unity-game-framework/ugf-initialize/compare/2.0.0-preview...2.1.0-preview)
 - [Milestone](https://github.com/unity-game-framework/ugf-initialize/milestone/6?closed=1)
