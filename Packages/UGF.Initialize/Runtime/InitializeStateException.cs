@@ -7,6 +7,10 @@ namespace UGF.Initialize.Runtime
     /// </summary>
     public sealed class InitializeStateException : Exception
     {
+        public InitializeStateException() : base("Invalid initialize state.")
+        {
+        }
+
         public InitializeStateException(string message) : base(message)
         {
         }

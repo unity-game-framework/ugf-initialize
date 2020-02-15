@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased - 2019-01-01
+## Unreleased - 2020-01-01
 - [Commits](https://github.com/unity-game-framework/ugf-initialize/compare/0.0.0...0.0.0)
 - [Milestone](https://github.com/unity-game-framework/ugf-initialize/milestone/0?closed=1)
 
@@ -25,6 +25,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 - Nothing.
+
+## 2.1.0-preview - 2020-02-15
+- [Commits](https://github.com/unity-game-framework/ugf-initialize/compare/2.0.0-preview...2.1.0-preview)
+- [Milestone](https://github.com/unity-game-framework/ugf-initialize/milestone/6?closed=1)
+
+### Added
+- Add `InitializeScope` to automatically uninitialize target after scope.
+- Add `InitializeStateException` default constructor.
+- Add `OnPostInitialize` and `OnPreUninitialize` overridable methods.
+- Add `InitializeCollection` to initialize or uninitialize collection of targets.
+
+### Removed
+- Removed deprecated code.
 
 ## 2.0.0-preview - 2019-11-18
 - [Commits](https://github.com/unity-game-framework/ugf-initialize/compare/1.2.0...2.0.0-preview)
