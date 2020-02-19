@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace UGF.Initialize.Runtime
 {
-    public class InitializeCollection<TItem> : InitializeBase, IInitializeCollection, IEnumerable<TItem> where TItem : class, IInitialize
+    public class InitializeCollection<TItem> : InitializeBase, IInitializeCollection where TItem : class, IInitialize
     {
         public int Count { get { return m_collection.Count; } }
         public TItem this[int index] { get { return m_collection[index]; } }
@@ -125,11 +125,6 @@ namespace UGF.Initialize.Runtime
         bool IInitializeCollection.Remove(IInitialize item)
         {
             return Remove((TItem)item);
-        }
-
-        IEnumerator<TItem> IEnumerable<TItem>.GetEnumerator()
-        {
-            return m_collection.GetEnumerator();
         }
 
         IEnumerator<IInitialize> IEnumerable<IInitialize>.GetEnumerator()
