@@ -8,7 +8,7 @@ namespace UGF.Initialize.Runtime
 
         public InitializeScope(IInitialize target)
         {
-            m_target = target;
+            m_target = target ?? throw new ArgumentNullException(nameof(target));
 
             if (!m_target.IsInitialized)
             {
