@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.ugf.initialize": {
-      "version": "file:Package",
+      "version": "file:UGF.Initialize",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
