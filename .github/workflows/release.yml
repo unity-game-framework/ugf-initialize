@@ -35,7 +35,7 @@ jobs:
         path=$(find "Packages" -name "UGF.*" -type d)
         date=$(date --iso-8601=seconds)
 
-        echo "::set-env name=packagePath::$path"
+        echo "::set-env name=packagePath::$path/package.json"
         echo "::set-env name=date::$date"
     - name: Config
       uses: unity-game-framework-actions/file-access@master

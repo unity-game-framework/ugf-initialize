@@ -40,7 +40,7 @@ jobs:
       run: |
         path=$(find "Packages" -name "UGF.*" -type d)
 
-        echo "::set-env name=packagePath::$path"
+        echo "::set-env name=packagePath::$path/package.json"
     - name: Update
       uses: unity-game-framework-actions/file-access@master
       with:
