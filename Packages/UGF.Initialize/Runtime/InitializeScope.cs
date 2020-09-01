@@ -2,7 +2,7 @@
 
 namespace UGF.Initialize.Runtime
 {
-    public struct InitializeScope : IDisposable
+    public readonly struct InitializeScope : IDisposable
     {
         private readonly IInitialize m_target;
 
@@ -18,7 +18,10 @@ namespace UGF.Initialize.Runtime
 
         public void Dispose()
         {
-            m_target.Uninitialize();
+            if (m_target.IsInitialized)
+            {
+                m_target.Uninitialize();
+            }
         }
     }
 }
