@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Release Notes
 
 - [Milestone](https://github.com/unity-game-framework/ugf-initialize/milestone/9?closed=1)  
-    null
+    
 
 ### Added
 
