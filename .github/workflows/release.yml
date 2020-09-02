@@ -113,7 +113,7 @@ jobs:
           ${{ steps.notes.outputs.result }}
     - name: Pack
       run: |
-        folder=(dirname ${{ env.packagePath }})
+        folder=$(dirname "${{ env.packagePath }}")
 
         npm pack ${{ github.workspace }}/$folder
     - name: Publish
