@@ -4,29 +4,35 @@ UGF.Initialize
 
 ## Info
 
-- **Version**: `2.4.0`
-- **Unity**: `2020.1`
+- **Version**: `2.3.0-preview`
+- **Unity Version**: `2019.3.0`
 - **API Compatibility Level**: `.NET Standard 2.0`
 
 ### Dependencies
 
 - N/A
 
-
-### Description
-
-Initialize pattern implementation.
-
 ### Changelog
 
-- [Full changelog](changelog.md)
+- [Full changelog][1]
 
-### Registry
+### Registries
 
-- [Public](https://bintray.com/unity-game-framework/public)
+- [Stable][2] (N/A)
+- [Develop][3]
 
-Read about where packages stored: [Registry](https://github.com/unity-game-framework/organization/blob/master/docs/registry.md).
+## Description
+
+Used to implement initialize pattern.
 
 ## How to Install
 
-Read about how to install any packages from the `Unity Game Framework` registry: [Install Package](https://github.com/unity-game-framework/organization/blob/master/docs/install-packages.md).
+Read about how to install any packages from the `Unity Game Framework` registry: [Install Package][4].
+
+---
+> Unity Game Framework | Copyright 2019
+
+[1]: changelog.md
+[2]: https://bintray.com/unity-game-framework/stable/com.ugf.initialize
+[3]: https://bintray.com/unity-game-framework/dev/com.ugf.initialize
+[4]: https://github.com/unity-game-framework/ugf-documentation/wiki/Install-Package
