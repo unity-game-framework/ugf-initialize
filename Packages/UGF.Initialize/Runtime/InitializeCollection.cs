@@ -71,12 +71,7 @@ namespace UGF.Initialize.Runtime
 
         public IInitialize Get(Type type)
         {
-            if (!TryGet(type, out IInitialize value))
-            {
-                throw new ArgumentException($"Value by the specified type not found: '{type}'.");
-            }
-
-            return value;
+            return TryGet(type, out IInitialize value) ? value : throw new ArgumentException($"Value not found by the specified type: '{type}'.");
         }
 
         public bool TryGet<T>(out T item)

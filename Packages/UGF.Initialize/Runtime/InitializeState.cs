@@ -3,7 +3,7 @@ namespace UGF.Initialize.Runtime
     /// <summary>
     /// Represents initialize state.
     /// </summary>
-    public struct InitializeState
+    public readonly struct InitializeState
     {
         /// <summary>
         /// Gets the value of the current state.
@@ -26,7 +26,7 @@ namespace UGF.Initialize.Runtime
         {
             if (Value)
             {
-                throw new InitializeStateException("A state already initialized.");
+                throw new InitializeStateException("State already initialized.");
             }
 
             return new InitializeState(true);
@@ -39,7 +39,7 @@ namespace UGF.Initialize.Runtime
         {
             if (!Value)
             {
-                throw new InitializeStateException("A state already uninitialized.");
+                throw new InitializeStateException("State already uninitialized.");
             }
 
             return new InitializeState(false);

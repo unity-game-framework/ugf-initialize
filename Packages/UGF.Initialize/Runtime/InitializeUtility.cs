@@ -5,7 +5,7 @@ namespace UGF.Initialize.Runtime
     /// <summary>
     /// Provides utilities to work with initialize.
     /// </summary>
-    public static partial class InitializeUtility
+    public static class InitializeUtility
     {
         /// <summary>
         /// Validates state of the specified handler.
