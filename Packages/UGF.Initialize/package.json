@@ -2,7 +2,7 @@
   "name": "com.ugf.initialize",
   "displayName": "UGF.Initialize",
   "version": "2.4.0",
-  "unity": "2020.1",
+  "unity": "2020.2",
   "apiCompatibility": ".NET Standard 2.0",
   "description": "Initialize pattern implementation.",
   "author": {
@@ -14,8 +14,8 @@
     "url": "git://github.com/unity-game-framework/ugf-initialize.git",
     "directory": "Packages/Package"
   },
-  "changelogUrl": "https://github.com/unity-game-framework/ugf-initialize/blob/master/license",
-  "licenseUrl": "https://github.com/unity-game-framework/ugf-initialize/blob/master/changelog.md",
+  "changelogUrl": "https://github.com/unity-game-framework/ugf-initialize/blob/master/changelog.md",
+  "licensesUrl": "https://github.com/unity-game-framework/ugf-initialize/blob/master/license",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@unity-game-framework"
   },
