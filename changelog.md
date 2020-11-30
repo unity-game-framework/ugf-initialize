@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0](https://github.com/unity-game-framework/ugf-initialize/releases/tag/2.6.0) - 2020-11-30  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-initialize/milestone/11?closed=1)  
+    
+
+### Changed
+
+- Add initializable with children ([#32](https://github.com/unity-game-framework/ugf-initialize/pull/32))  
+    - Add `Initializable.Children` as `IInitializeCollection` collection.
+    - Change `InitializeCollection.ReverseUninitializationOrder` to set from constructor only.
+
 ## [2.5.0](https://github.com/unity-game-framework/ugf-initialize/releases/tag/2.5.0) - 2020-11-10  
 
 ### Release Notes
