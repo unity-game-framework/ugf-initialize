@@ -8,11 +8,20 @@ namespace UGF.Initialize.Runtime
     {
         public int Count { get { return m_collection.Count; } }
         public TItem this[int index] { get { return m_collection[index]; } }
-        public bool ReverseUninitializationOrder { get; set; } = true;
+        public bool ReverseUninitializationOrder { get; }
 
         IInitialize IReadOnlyList<IInitialize>.this[int index] { get { return m_collection[index]; } }
 
         private readonly List<TItem> m_collection = new List<TItem>();
+
+        public InitializeCollection() : this(true)
+        {
+        }
+
+        public InitializeCollection(bool reverseUninitializationOrder)
+        {
+            ReverseUninitializationOrder = reverseUninitializationOrder;
+        }
 
         protected override void OnInitialize()
         {
