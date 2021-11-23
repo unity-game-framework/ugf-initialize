@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0](https://github.com/unity-game-framework/ugf-initialize/releases/tag/2.7.0) - 2021-11-23  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-initialize/milestone/12?closed=1)  
+    
+
+### Added
+
+- Add InitializeCollectionExtensions ([#35](https://github.com/unity-game-framework/ugf-initialize/pull/35))  
+    - Update package publish registry.
+    - Update package _Unity_ version to `2020.3`.
+    - Add `IInitializeCollection.Create<T>()` method as shortcut for creation into collection.
+    - Add `IInitializeCollection.TryGet<TArguments, T>()` method to get item from collection using specified predicate.
+
 ## [2.6.0](https://github.com/unity-game-framework/ugf-initialize/releases/tag/2.6.0) - 2020-11-30  
 
 ### Release Notes
