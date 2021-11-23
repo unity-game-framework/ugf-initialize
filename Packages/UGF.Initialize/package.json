@@ -2,7 +2,7 @@
   "name": "com.ugf.initialize",
   "displayName": "UGF.Initialize",
   "version": "2.6.0",
-  "unity": "2020.2",
+  "unity": "2020.3",
   "apiCompatibility": ".NET Standard 2.0",
   "description": "Initialize pattern implementation.",
   "author": {
