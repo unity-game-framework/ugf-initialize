@@ -4,7 +4,7 @@ UGF.Initialize
 
 ## Info
 
-- **Version**: `2.7.0`
+- **Version**: `2.8.0`
 - **Unity**: `2020.3`
 - **API Compatibility Level**: `.NET Standard 2.0`
 
