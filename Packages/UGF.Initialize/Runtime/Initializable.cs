@@ -15,16 +15,16 @@ namespace UGF.Initialize.Runtime
             Children = children ?? throw new ArgumentNullException(nameof(children));
         }
 
-        protected override void OnInitialize()
+        protected override void OnPreInitialize()
         {
-            base.OnInitialize();
+            base.OnPreInitialize();
 
             Children.Initialize();
         }
 
-        protected override void OnUninitialize()
+        protected override void OnPostUninitialize()
         {
-            base.OnUninitialize();
+            base.OnPostUninitialize();
 
             Children.Uninitialize();
         }
