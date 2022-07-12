@@ -25,6 +25,8 @@ namespace UGF.Initialize.Runtime
 
         public Task InitializeAsync()
         {
+            if (!IsInitialized) throw new InitializeStateException();
+
             m_state = m_state.Initialize();
 
             return OnInitializeAsync();
