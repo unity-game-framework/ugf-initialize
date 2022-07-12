@@ -36,21 +36,6 @@ namespace UGF.Initialize.Runtime
             }
         }
 
-        public async Task InitializeAsync()
-        {
-            m_state = m_state.Initialize();
-
-            for (int i = 0; i < m_collection.Count; i++)
-            {
-                TItem item = m_collection[i];
-
-                if (item is IInitializeAsync initialize)
-                {
-                    await initialize.InitializeAsync();
-                }
-            }
-        }
-
         protected override void OnUninitialize()
         {
             base.OnUninitialize();
@@ -72,6 +57,23 @@ namespace UGF.Initialize.Runtime
                 for (int i = 0; i < m_collection.Count; i++)
                 {
                     m_collection[i].Uninitialize();
+                }
+            }
+        }
+
+        public async Task InitializeAsync()
+        {
+            if (!IsInitialized) throw new InitializeStateException();
+
+            m_state = m_state.Initialize();
+
+            for (int i = 0; i < m_collection.Count; i++)
+            {
+                TItem item = m_collection[i];
+
+                if (item is IInitializeAsync initialize)
+                {
+                    await initialize.InitializeAsync();
                 }
             }
         }
