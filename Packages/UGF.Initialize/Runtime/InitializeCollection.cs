@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace UGF.Initialize.Runtime
 {
-    public class InitializeCollection<TItem> : InitializeBase, IInitializeCollection where TItem : class, IInitialize
+    public class InitializeCollection<TItem> : InitializeBase, IInitializeCollection, IInitializeAsync where TItem : class, IInitialize
     {
         public int Count { get { return m_collection.Count; } }
         public TItem this[int index] { get { return m_collection[index]; } }
         public bool ReverseUninitializationOrder { get; }
+        public bool IsInitializedAsync { get { return m_state; } }
 
         IInitialize IReadOnlyList<IInitialize>.this[int index] { get { return m_collection[index]; } }
 
+        private InitializeState m_state;
         private readonly List<TItem> m_collection = new List<TItem>();
 
         public InitializeCollection() : this(true)
@@ -33,9 +36,29 @@ namespace UGF.Initialize.Runtime
             }
         }
 
+        public async Task InitializeAsync()
+        {
+            m_state = m_state.Initialize();
+
+            for (int i = 0; i < m_collection.Count; i++)
+            {
+                TItem item = m_collection[i];
+
+                if (item is IInitializeAsync initialize)
+                {
+                    await initialize.InitializeAsync();
+                }
+            }
+        }
+
         protected override void OnUninitialize()
         {
             base.OnUninitialize();
+
+            if (m_state)
+            {
+                m_state = m_state.Uninitialize();
+            }
 
             if (ReverseUninitializationOrder)
             {
